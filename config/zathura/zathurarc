@@ -1,0 +1,25 @@
+# Basic Settings
+set selection-clipboard clipboard
+set recolor true
+set recolor-keephue false
+
+# Page Settings
+set pages-per-row 1
+set scroll-page-aware true
+set smooth-scroll true
+set scroll-full-overlap 0.01
+set scroll-step 100
+
+# Zoom and Fit
+set zoom-min 10
+set adjust-open "best-fit"
+
+# UI Settings
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+set window-title-basename true
+set font "Maple Mono 12"
+
+# Catppuccin Mocha Theme
+include theme

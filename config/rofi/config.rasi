@@ -1,0 +1,127 @@
+@import "~/.config/rofi/current-theme"
+
+
+configuration {
+    modi: "run,drun,window";
+    icon-theme: "Mignon-pastel"; /* Replace with the name of your installed icon theme */
+    show-icons: true;
+    drun-display-format: "{name}";
+    location: 0;
+    disable-history: true;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 󰕰  Window ";
+    sidebar-mode: false;
+    fixed-num-lines: false;
+}
+
+
+
+element-text, element-icon , mode-switcher {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    width: 400px;
+    border: 0px;
+    border-color: #7a8478;
+    background-color: @bg;
+    border-radius: 0;
+}
+
+mainbox {
+    background-color: transparent;
+}
+
+inputbar {
+    children: [entry];
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    enabled:false;
+    background-color: transparent;
+    padding: 6px;
+    text-color: @bg;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 20px 20px 20px;
+    border: 0px 3px 0px 3px;
+    border-color: @fg;
+    text-color: @fg;
+    background-color: transparent;
+    horizontal-align: 0.5;
+    placeholder-color: @white;
+    cursor-width: 0px;
+    blink: false;
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 0px 20px 20px 20px;
+    columns: 1;
+    lines: 10;
+    background-color: transparent;
+    scrollbar:false;
+}
+
+element {
+    padding: 8px;
+    spacing: 10px;
+    border-radius: 5px;
+}
+
+/* Fix for the "Normal" (unselected) rows */
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color: @white;
+}
+
+/* Fix for the "Selected" row */
+element selected.normal {
+    background-color: transparent; /* Or use @selected-col */
+    text-color: @fg;
+}
+
+/* This is the crucial part for the text color */
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 24px;
+    cursor: inherit;
+}
+
+
+message {
+    background-color: transparent;
+    margin: 2px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+textbox {
+    padding: 6px;
+    margin: 20px 0px 0px 20px;
+    text-color: @fg;
+    background-color: transparent;
+}

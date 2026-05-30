@@ -1,0 +1,11 @@
+
+* {
+
+    bg:  #1a1b2600;
+    fg: #7aa2f7;
+    place: #24283b;
+    white: #c0caf5;
+    font: "Maple Mono 14";
+}
+
+

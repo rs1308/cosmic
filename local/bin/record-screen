@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SAVE_DIR="$HOME/Videos"
+FILENAME="recording_$(date +%Y-%m-%d_%H-%M-%S).mp4"
+FULL_PATH="$SAVE_DIR/$FILENAME"
+
+if pgrep -f "gpu-screen-recorder" >/dev/null; then
+  pkill -2 -f "gpu-screen-recorder"
+  notify-send "Recording Stopped"
+else
+  notify-send "Recording Started"
+
+  gpu-screen-recorder -w "eDP-1" -c mp4 -k h264 -f 60 -a "$(pactl get-default-sink).monitor" -o "$FULL_PATH" &
+fi

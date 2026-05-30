@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+export PATH="$HOME/.local/bin:$PATH"
+
+BASE_DIR="$HOME/ikigai/config"
+spicetify_theme="$HOME/.local/bin/spicetify-check"
+
+gtk3="$HOME/.config/gtk-3.0/settings.ini"
+gtk4="$HOME/.config/gtk-4.0/settings.ini"
+
+choice=$(find "$BASE_DIR/alacritty" -name "*.toml" ! -name "current-theme.toml" ! -name "alacritty.toml" -printf "%f\n" | sed 's/\.toml//' | rofi -dmenu -i -theme-str 'entry { placeholder: "Themes"; }')
+
+[[ -z "$choice" ]] && exit 1
+
+ln -snf "$BASE_DIR/alacritty/$choice.toml" "$BASE_DIR/alacritty/current-theme"
+ln -snf "$BASE_DIR/rofi/$choice.rasi" "$BASE_DIR/rofi/current-theme"
+ln -snf "$BASE_DIR/waybar/$choice.css" "$BASE_DIR/waybar/current-theme"
+ln -snf "$BASE_DIR/mako/$choice" "$BASE_DIR/mako/current-theme"
+ln -snf "$BASE_DIR/hypr/$choice.conf" "$BASE_DIR/hypr/current-theme"
+ln -snf "$HOME/.config/vesktop/themes/$choice.css" "$HOME/.config/vesktop/themes/system24.theme.css"
+ln -snf "$BASE_DIR/themes/$choice" "$HOME/ikigai/current"
+ln -snf "$HOME/.config/zathura/$choice" "$HOME/.config/zathura/theme"
+
+case "$choice" in
+catppuccin)
+  spc=CatppuccinMocha
+  gtk_theme="Catppuccin-Dark"
+  ;;
+nord)
+  spc=Nord
+  gtk_theme="Nordic"
+  ;;
+rosepine)
+  spc=RosePine
+
+  gtk_theme="Rosepine-Dark"
+  ;;
+tokyonight)
+  spc=TokyoNight
+
+  gtk_theme="Tokyonight-Dark"
+  ;;
+everforest)
+  spc=EverforestDarkMedium
+
+  gtk_theme="Everforest-Green-Dark"
+  ;;
+dracula)
+  spc=Dracula
+
+  gtk_theme="Dracula"
+  ;;
+esac
+
+gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme"
+
+sed -i -e "/gtk-theme-name/s/=.*/=$gtk_theme/" "$HOME"/.config/gtk-{3,4}.0/settings.ini
+
+if [ -d "/usr/share/themes/$gtk_theme/gtk-4.0" ]; then
+  ln -sf "/usr/share/themes/$gtk_theme/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/"
+  ln -sf "/usr/share/themes/$gtk_theme/gtk-4.0/gtk-dark.css" "$HOME/.config/gtk-4.0/" 2>/dev/null
+  ln -sf "/usr/share/themes/$gtk_theme/gtk-4.0/assets" "$HOME/.config/gtk-4.0/" 2>/dev/null
+fi
+
+if [ -d "$HOME/.themes/$gtk_theme/gtk-4.0" ]; then
+  ln -sf "$HOME/.themes/$gtk_theme/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/"
+  ln -sf "$HOME/.themes/$gtk_theme/gtk-4.0/gtk-dark.css" "$HOME/.config/gtk-4.0/" 2>/dev/null
+  ln -sf "$HOME/.themes/$gtk_theme/gtk-4.0/assets" "$HOME/.config/gtk-4.0/" 2>/dev/null
+fi
+
+makoctl reload
+
+hyprctl reload
+
+bash ~/.local/bin/restart-waybar
+
+touch "$BASE_DIR/alacritty/alacritty.toml"
+
+"$spicetify_theme" "$spc" &
+
+notify-send "Theme Changed" "Applied $choice theme"

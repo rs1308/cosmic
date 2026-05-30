@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+current=$(powerprofilesctl get)
+
+case "$current" in
+    balanced)
+        powerprofilesctl set performance
+        notify-send "⚡ Performance Mode" "Boost activated!"
+        ;;
+    performance)
+        powerprofilesctl set power-saver
+        notify-send "🌱 Power Saver Mode" "Battery life extended!"
+        ;;
+    power-saver)
+        powerprofilesctl set balanced
+        notify-send "💼 Balanced Mode" "Smooth and steady."
+        ;;
+esac
+

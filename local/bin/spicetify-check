@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if command -v spicetify >/dev/null; then
+  status="$(playerctl -p spotify status 2>/dev/null)"
+
+  spicetify config color_scheme "$1"
+  pgrep -x spotify >/dev/null && active=true
+
+  if [[ "$active" == "true" ]]; then
+    spicetify apply
+  else
+    spicetify apply && pkill -9 spotify
+  fi
+
+  if [[ "$status" == "Playing" ]]; then
+    sleep 2.5
+    playerctl -p spotify play
+  fi
+fi

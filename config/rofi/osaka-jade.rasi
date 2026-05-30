@@ -1,0 +1,9 @@
+* {
+    background:     #1E352AFF;
+    background-alt: #1E352AFF;
+    foreground:     #C8D3C5FF;
+    selected:       #3BAA6FFF;  /* Jade green */
+    active:         #7FD1A7FF;  /* Minty accent */
+    urgent:         #D36C6CFF;  /* Muted red */
+}
+

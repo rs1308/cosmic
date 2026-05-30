@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+basedir="$HOME/walls"
+indexfile="/home/rs/index"
+index=$(<"$indexfile")
+listy=(/home/rs/walls/*)
+currentwall="${listy[$index]}"
+
+swaybg -i "$currentwall" &

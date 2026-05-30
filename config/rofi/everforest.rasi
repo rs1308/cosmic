@@ -1,0 +1,9 @@
+* {
+
+    bg:  #272e33;
+    fg: #d3c6aa;
+    place: #24283b;
+    white: #7a7478;
+    font: "Maple Mono 14";
+}
+

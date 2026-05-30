@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+pgrep -x spotify > /dev/null && echo "active" || echo "inactive"

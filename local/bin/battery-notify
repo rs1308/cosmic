@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# Check battery status in a loop
+while true; do
+  # Get the battery status (charging or discharging)
+  status=$(upower -i "$(upower -e | grep BAT)" | grep -E "state" | awk '{print $2}')
+
+  # If the battery is charging, skip checking until it stops charging
+  if [ "$status" = "charging" ]; then
+    sleep 600 # Check every minute if charging, but don't check battery level
+    continue
+  fi
+
+  # If the battery is discharging, check the percentage
+  battery=$(upower -i "$(upower -e | grep BAT)" | grep -E "percentage" | awk '{print $2}' | tr -d '%')
+
+  # Alert at different battery levels
+  if [ "$battery" -le 10 ]; then
+    notify-send -u critical "Battery Critical" "Battery is at ${battery}%. Please plug in the charger."
+    sleep 600 # Wait 10 minutes before checking again after a critical alert
+  elif [ "$battery" -le 15 ]; then
+    notify-send -u normal "Battery Low" "Battery is at ${battery}%. Consider charging soon."
+    sleep 300 # Wait 5 minutes before checking again after a low alert
+  elif [ "$battery" -le 25 ]; then
+    notify-send -u normal "Battery Warning" "Battery is at ${battery}%. Charge soon."
+    sleep 300 # Wait 5 minutes before checking again after a warning alert
+  else
+    sleep 180 # If battery is above 25%, check every 1 minute
+  fi
+done

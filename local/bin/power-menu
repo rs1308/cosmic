@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+choice=$(echo -e "Shutdown\nReboot\nLock\nSuspend\nLogout" | rofi -dmenu -i -p "Power Options")
+
+case "$choice" in
+Shutdown)
+  systemctl poweroff
+  ;;
+Reboot)
+  systemctl reboot
+  ;;
+Lock)
+  sleep 0.2 &&
+    hyprlock
+  ;;
+Suspend)
+  sleep 0.2 &&
+    systemctl suspend
+  ;;
+Logout)
+  hyprctl dispatch exit
+  ;;
+esac

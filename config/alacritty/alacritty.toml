@@ -1,0 +1,12 @@
+[general]
+import = [
+  "current-theme"
+]
+
+[font]
+normal.family = "maple mono nf cn"
+bold.style = "SemiBold"
+size = 14
+
+[window]
+opacity = 1

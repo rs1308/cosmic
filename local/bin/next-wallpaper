@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+indexfile="/home/rs/index"
+index=$(<"$indexfile")
+
+listy=(/home/rs/walls/*)
+length="${#listy[@]}"
+
+if ((index == $((length - 1)))); then
+  currentwall=${listy[0]}
+  index=0
+  echo 0 >$indexfile
+else
+  currentwall=${listy[$(($index + 1))]}
+  index=$(((index + 1)))
+  echo $index >$indexfile
+fi
+
+killall swaybg
+swaybg -i "$currentwall" &
