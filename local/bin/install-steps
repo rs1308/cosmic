@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+echo "Updating Packages"
+
+sudo pacman -Syuu git base-devel
+
+echo "Installing yay"
+
+git clone https://aur.archlinux.org/yay.git
+
+cd yay
+
+makepkg -si
+
+rm -rf yay
+
+echo "Installing necessary packages"
+
+yay -S grim slurp waybar alacritty-sixel-git everforest-gtk-theme-git neovim rofi nerd-fonts maple-mono-nf-cn-unhinted zsh zsh-autosuggestions zsh-syntax-highlighting zoxide zenity zathura zarthura-pdf-mupdf yazi xdg-desktop-portal-hyprland vlc vlc-plugins-all brightnessctl swaybg pcmanfm pavucontrol nitch mpd mpc rmpc impala bluetui blueberry-wayland firefox discord cava catppuccin-gtk-theme-mocha bluez bluez-utils bibata-cursor-theme --noconfirm
+
+echo "About to install lazyvim"
+
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+
+rm -rf ~/.config/nvim/.git
+
+cd .config
+
+git clone git@github.com:rs1308/Cosmic.git
+
+echo "Setting up symlinks"
+
+rm -rf ~/.config/hypr
+
+ln -snf ~/.config/cosmic/config/hypr ~/.config/
+
+rm -rf ~/.config/waybar
+
+ln -snf ~/.config/cosmic/config/waybar ~/.config/
+
+rm -rf ~/.config/dunst
+
+ln -snf ~/.config/cosmic/config/dunst ~/.config/
+
+ln -snf ~/.config/cosmic/local/bin ~/.local/
+
+rm -rf ~/.config/alacritty
+
+ln -snf ~/.config/cosmic/config/alacritty ~/.config
+
+rm -rf ~/.config/starship.toml
+
+ln -snf ~/.config/cosmic/config/starship.toml ~/.config/
+
+rm -rf ~/.config/rofi
+
+ln -snf ~/.config/cosmic/config/rofi ~/.config/
+
+rm -rf ~/.config/zathura
+
+ln -snf ~/.config/cosmic/config/zathura ~/.config/
