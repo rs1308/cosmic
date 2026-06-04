@@ -16,7 +16,7 @@ rm -rf yay
 
 echo "Installing necessary packages"
 
-yay -S grim slurp waybar alacritty-sixel-git everforest-gtk-theme-git neovim rofi nerd-fonts maple-mono-nf-cn-unhinted zsh zsh-autosuggestions zsh-syntax-highlighting zoxide zenity zathura zarthura-pdf-mupdf yazi xdg-desktop-portal-hyprland vlc vlc-plugins-all brightnessctl swaybg pcmanfm pavucontrol nitch mpd mpc rmpc impala bluetui blueberry-wayland firefox discord cava catppuccin-gtk-theme-mocha bluez bluez-utils bibata-cursor-theme --noconfirm
+yay -S grim slurp waybar alacritty-sixel-git neovim rofi maple-mono-nf-cn-unhinted zsh zsh-autosuggestions zsh-syntax-highlighting zoxide zenity yazi xdg-desktop-portal-hyprland brightnessctl swaybg pavucontrol mpd mpc ncmpcpp impala bluetui bluez bluez-utils bibata-cursor-theme --noconfirm
 
 echo "About to install lazyvim"
 
@@ -28,30 +28,30 @@ echo "Setting up symlinks"
 
 rm -rf ~/.config/hypr
 
-ln -snf ~/.config/cosmic/config/hypr ~/.config/
+ln -sf ~/.config/cosmic/config/hypr ~/.config/
 
 rm -rf ~/.config/waybar
 
-ln -snf ~/.config/cosmic/config/waybar ~/.config/
+ln -sf ~/.config/cosmic/config/waybar ~/.config/
 
 rm -rf ~/.config/dunst
 
-ln -snf ~/.config/cosmic/config/dunst ~/.config/
+ln -sf ~/.config/cosmic/config/dunst ~/.config/
 
-ln -snf ~/.config/cosmic/local/bin ~/.local/
+ln -sf ~/.config/cosmic/local/bin ~/.local/
 
 rm -rf ~/.config/alacritty
 
-ln -snf ~/.config/cosmic/config/alacritty ~/.config
+ln -sf ~/.config/cosmic/config/alacritty ~/.config
 
 rm -rf ~/.config/starship.toml
 
-ln -snf ~/.config/cosmic/config/starship.toml ~/.config/
+ln -sf ~/.config/cosmic/config/starship.toml ~/.config/
 
 rm -rf ~/.config/rofi
 
-ln -snf ~/.config/cosmic/config/rofi ~/.config/
+ln -sf ~/.config/cosmic/config/rofi ~/.config/
 
 rm -rf ~/.config/zathura
 
-ln -snf ~/.config/cosmic/config/zathura ~/.config/
+ln -sf ~/.config/cosmic/config/zathura ~/.config/
