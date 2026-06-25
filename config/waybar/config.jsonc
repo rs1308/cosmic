@@ -9,6 +9,7 @@
   "modules-right": [
     "group/tray-expander",
     "network",
+    "bluetooth",
     "pulseaudio",
     "backlight",
     "battery"
@@ -46,7 +47,7 @@
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
-    "format-wifi": "{icon}  {signalStrength}%",
+    "format-wifi": "{icon}",
     "format-ethernet": "󰀂",
     "format-disconnected": "󰤮",
     "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
@@ -54,18 +55,18 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "foot --command nmtui"
+    "on-click": "alacritty --class nmtui -e nmtui"
   },
   "battery": {
-    "format": "{capacity}% {icon}",
-    "format-discharging": "{icon} {capacity}%",
-    "format-charging": "{icon} {capacity}%",
-    "format-plugged": " {capacity}%",
+    "format": "{icon}",
+    "format-discharging": "{icon}",
+    "format-charging": "{icon}",
+    "format-plugged": "",
     "format-icons": {
       "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
       "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
-    "format-full": "󰂅 {capacity}%",
+    "format-full": "󰂅 ",
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
@@ -80,16 +81,16 @@
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueberry"
+    "on-click": "alacritty --class bluetui -e bluetui"
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
-    "format-bluetooth": "{icon}  {volume}%",
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-right": "pavucontrol",
+    "on-click-right": "alacritty -e pipemixer",
     "tooltip-format": "Playing at {volume}%",
-    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
     "format-muted": "  {volume}%",
     "format-icons": {
       "default": ["", "", ""]
@@ -97,16 +98,17 @@
   },
 
   "backlight": {
-    "format": "{icon} {percent}%",
-    "on-scroll-up": "brightnessctl s +5%",
-    "on-scroll-down": "brightnessctl s 5%-",
+    "format": "{icon}",
+    "on-scroll-up": "brightnessctl s 5%-",
+    "on-scroll-down": "brightnessctl s +5%",
+    "tooltip-format": "{percent}%",
     "format-icons": "󰃠"
   },
 
   "group/tray-expander": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 600,
+      "transition-duration": 490,
       "children-class": "tray-group-item"
     },
     "modules": ["custom/expand-icon", "tray"]

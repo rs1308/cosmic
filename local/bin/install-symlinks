@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+echo "Setting Up Symlinks "
+
+# [ hypr waybar dunst bin alacritty starship rofi zathura uwsm-envs]
+
+rm -rf ~/.config/hypr && ln -sf ~/.config/cosmic/config/hypr ~/.config/
+
+rm -rf ~/.config/waybar
+
+ln -sf ~/.config/cosmic/config/waybar ~/.config/
+
+rm -rf ~/.config/dunst
+
+ln -sf ~/.config/cosmic/config/dunst ~/.config/
+
+ln -sf ~/.config/cosmic/local/bin ~/.local/
+
+rm -rf ~/.config/alacritty
+
+ln -sf ~/.config/cosmic/config/alacritty ~/.config
+
+rm -rf ~/.config/starship.toml
+
+ln -sf ~/.config/cosmic/config/starship.toml ~/.config/
+
+rm -rf ~/.config/rofi
+
+ln -sf ~/.config/cosmic/config/rofi ~/.config/
+
+rm -rf ~/.config/zathura
+
+ln -sf ~/.config/cosmic/config/zathura ~/.config/
+
+ln -sf ~/.config/cosmic/config/uwsm ~/.config/

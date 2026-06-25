@@ -3,7 +3,6 @@
 -- ###################
 --
 
--- Applications / system
 hl.bind("ALT + RETURN", hl.dsp.exec_cmd(terminal))
 
 hl.bind("ALT + W", hl.dsp.window.close())
@@ -26,7 +25,7 @@ hl.bind("ALT + PRINT", hl.dsp.exec_cmd("~/.local/bin/screenshot-region"))
 
 hl.bind("ALT + SHIFT + W", hl.dsp.exec_cmd("~/.local/bin/next-wallpaper"))
 
-hl.bind("ALT + B", hl.dsp.exec_cmd("~/.local/bin/toggle-power"))
+hl.bind("ALT + P", hl.dsp.exec_cmd("~/.local/bin/toggle-power"))
 
 hl.bind("ALT + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 
@@ -40,7 +39,8 @@ hl.bind("ALT + T", hl.dsp.exec_cmd("~/.local/bin/change-theme"))
 
 hl.bind("ALT + DELETE", hl.dsp.exec_cmd("~/.local/bin/power-menu"))
 
--- MPC volume
+hl.bind("ALT + B", hl.dsp.exec_cmd(browser))
+
 hl.bind("CTRL + left", hl.dsp.exec_cmd("mpc volume -2"), {
 	repeating = true,
 	locked = true,
@@ -51,22 +51,13 @@ hl.bind("CTRL + right", hl.dsp.exec_cmd("mpc volume +2"), {
 	locked = true,
 })
 
--- Toggle ncmpcpp scratchpad
 hl.bind("ALT + S", hl.dsp.workspace.toggle_special("ncmpcpp"))
 
--- Focus movement
 hl.bind("ALT + h", hl.dsp.focus({ direction = "l" }))
-
 hl.bind("ALT + l", hl.dsp.focus({ direction = "r" }))
-
 hl.bind("ALT + k", hl.dsp.focus({ direction = "u" }))
-
 hl.bind("ALT + j", hl.dsp.focus({ direction = "d" }))
 
--- Layout message
-hl.bind("ALT + q", hl.dsp.layout("colresize +conf"))
-
--- Switch workspaces
 hl.bind("ALT + 1", hl.dsp.focus({ workspace = "1" }))
 hl.bind("ALT + 2", hl.dsp.focus({ workspace = "2" }))
 hl.bind("ALT + 3", hl.dsp.focus({ workspace = "3" }))
@@ -78,38 +69,22 @@ hl.bind("ALT + 8", hl.dsp.focus({ workspace = "8" }))
 hl.bind("ALT + 9", hl.dsp.focus({ workspace = "9" }))
 hl.bind("ALT + 0", hl.dsp.focus({ workspace = "10" }))
 
--- Move active window to workspace
 hl.bind("ALT + SHIFT + 1", hl.dsp.window.move({ workspace = "1" }))
-
 hl.bind("ALT + SHIFT + 2", hl.dsp.window.move({ workspace = "2" }))
-
 hl.bind("ALT + SHIFT + 3", hl.dsp.window.move({ workspace = "3" }))
-
 hl.bind("ALT + SHIFT + 4", hl.dsp.window.move({ workspace = "4" }))
-
 hl.bind("ALT + SHIFT + 5", hl.dsp.window.move({ workspace = "5" }))
-
 hl.bind("ALT + SHIFT + 6", hl.dsp.window.move({ workspace = "6" }))
-
 hl.bind("ALT + SHIFT + 7", hl.dsp.window.move({ workspace = "7" }))
-
 hl.bind("ALT + SHIFT + 8", hl.dsp.window.move({ workspace = "8" }))
-
 hl.bind("ALT + SHIFT + 9", hl.dsp.window.move({ workspace = "9" }))
-
 hl.bind("ALT + SHIFT + 0", hl.dsp.window.move({ workspace = "10" }))
-
--- Workspace scrolling
 hl.bind("ALT + mouse_down", hl.dsp.exec_cmd("hyprctl dispatch workspace e+1"), { mouse = true })
-
 hl.bind("ALT + mouse_up", hl.dsp.exec_cmd("hyprctl dispatch workspace e-1"), { mouse = true })
 
--- Mouse drag / resize
 hl.bind("ALT + mouse:272", hl.dsp.window.drag(), { mouse = true })
-
 hl.bind("ALT + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Audio keys
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), {
 	repeating = true,
 	locked = true,
@@ -128,7 +103,6 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @default_audio_sourc
 	locked = true,
 })
 
--- Brightness keys
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set +5%"), {
 	repeating = true,
 	locked = true,
@@ -139,5 +113,4 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), {
 	locked = true,
 })
 
--- Night light
 hl.bind("ALT + N", hl.dsp.exec_cmd("~/.local/bin/nightlight-toggle"))

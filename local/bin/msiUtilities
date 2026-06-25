@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+coolerBoostStatus=$(cat /sys/devices/platform/msi-ec/cooler_boost)
+
+if [[ $coolerBoostStatus == on ]]; then
+  echo off | tee /sys/devices/platform/msi-ec/cooler_boost >/dev/null
+else
+  echo on | tee /sys/devices/platform/msi-ec/cooler_boost >/dev/null
+fi

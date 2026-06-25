@@ -1,3 +1,4 @@
 terminal = "alacritty"
-fileManager = "alacritty -e yazi"
+fileManager = "thunar"
 menu = "rofi -show drun"
+browser = "helium-browser"

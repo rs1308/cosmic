@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+mkdir -p ~/.config/gtkThemes
+cd ~/.config/gtkThemes
+
+# Install Catppuccin theme
+
+git clone https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme.git
+cd Catppuccin-GTK-Theme
+cd themes
+./install.sh -l
+
+cd ~/.config/gtkThemes
+
+# Install Everforest theme
+
+git clone https://github.com/Fausto-Korpsvart/Everforest-GTK-Theme.git
+cd Everforest-GTK-Theme
+cd themes
+./install.sh -l
+
+

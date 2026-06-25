@@ -26,7 +26,7 @@ catppuccin)
 everforest)
   spc=EverforestDarkMedium
 
-  gtk_theme="Everforest-Green-Dark"
+  gtk_theme="Everforest-Dark"
   ;;
 esac
 

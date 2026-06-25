@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-basedir="/home/rs/.config/cosmic/walls"
-indexfile="/home/rs/index"
-index=$(<"$indexfile")
-listy=(/home/rs/.config/cosmic/walls/*)
-currentwall="${listy[$index]}"
-
-swaybg -i "$currentwall" &

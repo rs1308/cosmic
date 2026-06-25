@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 
-indexfile="/home/rs/index"
-index=$(<"$indexfile")
+wallDir=~/.config/cosmic/walls
 
-listy=(/home/rs/.config/cosmic/walls/*)
-length="${#listy[@]}"
+indexFile=~/.config/cosmic/wallIndex
+touch $indexFile
+wallIndex=$(cat ~/.config/cosmic/wallIndex)
 
-if ((index == $((length - 1)))); then
-  currentwall=${listy[0]}
-  index=0
-  echo 0 >$indexfile
+mapfile array < <(ls $wallDir)
+
+arrayLength=${#array[@]}
+
+if ((((wallIndex + 1)) < arrayLength)); then
+  echo $((wallIndex + 1)) >$indexFile
+  toBeApplied=$((wallIndex + 1))
 else
-  currentwall=${listy[$(($index + 1))]}
-  index=$(((index + 1)))
-  echo $index >$indexfile
+  echo 0 >$indexFile
+  toBeApplied=0
 fi
 
 killall swaybg
-swaybg -i "$currentwall" &
+swaybg -i "$wallDir""/"${array[$toBeApplied]} &

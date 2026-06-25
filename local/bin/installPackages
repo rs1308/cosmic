@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+echo "Installing necessary packages"
+
+packages=(
+  grim
+  slurp
+  uwsm
+  libnewt
+  waybar
+  sof-firmware
+  linux-headers
+  alacritty-sixel-git
+  neovim
+  rofi
+  maple-mono-nf-cn-unhinted
+  zsh
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zoxide
+  zenity
+  xdg-desktop-portal-hyprland
+  brightnessctl
+  swaybg
+  mpd
+  mpc
+  rmpc
+  impala
+  bluetui
+  bluez
+  bluez-utils
+  bibata-cursor-theme
+  wl-clipboard
+  cliphist
+  power-profiles-daemon
+  mcontrolcenter-bin
+  msi-ec-dkms-git
+  hyprsunset
+)
+
+yay -S "${packages[@]}" --noconfirm

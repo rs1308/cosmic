@@ -1,7 +1,6 @@
 require("monitors")
 require("defaults")
 require("autostart")
-require("envs")
 require("look")
 require("input")
 require("binds")

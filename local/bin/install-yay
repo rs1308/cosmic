@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+echo "Updating Packages and Installing Yay"
+
+sudo pacman -Syuu git base-devel
+
+echo "Installing yay"
+
+git clone https://aur.archlinux.org/yay.git
+
+cd yay
+
+makepkg -si
+
+rm -rf yay

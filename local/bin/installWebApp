@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+name=$(gum input --placeholder "Enter name of App")
+
+homeDir=$( echo $HOME )
+
+iconpath="$homeDir/.local/share/icons/$name.svg"
+
+url=$(gum input --placeholder "Enter url for the website (eg.https://example.com)")
+
+iconUrl=$( gum input --placeholder "Enter svg url for App from dashboardicons.com" )
+
+curl -L -o ~/.local/share/icons/$name.svg "$iconUrl"
+
+launchCommand="chromium --app=\""$url"\" --user-data-dir=\""$homeDir"/.config/webApps/"$name"\" --no-first-run --no-default-browser-check"
+
+cat > ~/.local/share/applications/$name.desktop << EOF
+[Desktop Entry]
+Type=Application
+Name=$name
+Exec=$launchCommand
+Icon=$homeDir/.local/share/icons/$name.svg
+Terminal=false
+EOF

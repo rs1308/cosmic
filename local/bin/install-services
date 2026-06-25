@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+systemctl --user enable --now mpd
+systemctl --user enable --now mpd-discord-rpc
+
+sudo systemctl enable --now nvidia-powerd power-profiles-daemon
