@@ -6,7 +6,7 @@ import = [
 [font]
 normal.family = "maple mono nf cn"
 bold.style = "SemiBold"
-size = 14
+size = 13
 
 [window]
 opacity = 1

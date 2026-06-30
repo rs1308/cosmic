@@ -1,0 +1,11 @@
+[urgency_low]
+background = "#272e33"
+foreground = "#d3c6aa"
+
+[urgency_normal]
+background = "#272e33"
+foreground = "#d3c6aa"
+
+[urgency_critical]
+background = "#272e33"
+foreground = "#e57e80"

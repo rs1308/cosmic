@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
-wallDir=~/.config/cosmic/walls
+currentTheme=$(cat ~/.config/cosmic/current-theme)
 
-indexFile=~/.config/cosmic/wallIndex
-touch $indexFile
-wallIndex=$(cat ~/.config/cosmic/wallIndex)
+baseWallDir=~/.config/cosmic/walls
+
+wallDir="$baseWallDir""/""$currentTheme"
+
+indexDir=~/.config/cosmic/walls/indices
+indexFile="$indexDir""/""$currentTheme"
+
+wallIndex=$(cat $indexFile)
 
 mapfile array < <(ls $wallDir)
 

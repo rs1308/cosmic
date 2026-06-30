@@ -1,10 +1,11 @@
-hl.curve("mwahhh", { type = "bezier", points = { { 0.16, 1 }, { 0.3, 1 } } })
+hl.curve("mwahhh", { type = "bezier", points = { { 0, 0.01 }, { 0.52, 0.83 } } })
 
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 2, bezier = "mwahhh", style = "popin" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 2, bezier = "mwahhh", style = "popin" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 4, bezier = "mwahhh", style = "slide" })
-hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 3, bezier = "mwahhh", style = "slidevert" })
-hl.animation({ leaf = "layers", enabled = true, speed = 2, bezier = "mwahhh", style = "popin" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 1.9, bezier = "mwahhh", style = "popin" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 1.9, bezier = "mwahhh", style = "popin" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 1.9, bezier = "mwahhh", style = "popin" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 1.9, bezier = "mwahhh", style = "slide" })
+hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 1, bezier = "mwahhh", style = "slidevert" })
+hl.animation({ leaf = "layers", enabled = true, speed = 1, bezier = "mwahhh", style = "slide" })
 
 hl.config({
 	general = {
@@ -17,12 +18,17 @@ hl.config({
 	decoration = {
 		active_opacity = 1,
 		inactive_opacity = 0.6,
+		border_part_of_window = false,
 		blur = {
 			size = 4,
 			passes = 2,
 			new_optimizations = true,
 			noise = 0,
 			brightness = 0.8,
+		},
+
+		shadow = {
+			enabled = false,
 		},
 	},
 })

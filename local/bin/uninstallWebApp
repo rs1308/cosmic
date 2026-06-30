@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+appDir="$HOME/.config/webApps"
+iconDir="$HOME/.local/share/icons"
+desktopEntryDir="$HOME/.local/share/applications"
+webAppProfileDir="$HOME/.config/webApps"
+
+choice=$( ls $appDir | rofi -dmenu )
+
+rm -rf "$appDir/$choice.desktop"
+rm "$iconDir/$choice.svg"
+rm "$desktopEntryDir/$choice.desktop"
+rm -rf "$webAppProfileDir/$choice"
+
+

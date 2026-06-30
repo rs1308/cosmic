@@ -6,6 +6,8 @@ BASE_DIR="$HOME/.config/cosmic/config"
 gtk3="$HOME/.config/gtk-3.0/settings.ini"
 gtk4="$HOME/.config/gtk-4.0/settings.ini"
 
+startWallpaper=~/.config/cosmic/local/bin/startup-wallpaper
+
 choice=$(find "$BASE_DIR/alacritty" -name "*.toml" ! -name "current-theme.toml" ! -name "alacritty.toml" -printf "%f\n" | sed 's/\.toml//' | rofi -dmenu -i -theme-str 'entry { placeholder: "Themes"; }')
 
 [[ -z "$choice" ]] && exit 1
@@ -13,20 +15,20 @@ choice=$(find "$BASE_DIR/alacritty" -name "*.toml" ! -name "current-theme.toml" 
 ln -snf "$BASE_DIR/alacritty/$choice.toml" "$BASE_DIR/alacritty/current-theme"
 ln -snf "$BASE_DIR/rofi/$choice.rasi" "$BASE_DIR/rofi/current-theme"
 ln -snf "$BASE_DIR/waybar/$choice.css" "$BASE_DIR/waybar/current-theme"
-ln -snf "$BASE_DIR/mako/$choice" "$BASE_DIR/mako/current-theme"
-ln -snf "$BASE_DIR/hypr/$choice.conf" "$BASE_DIR/hypr/current-theme"
-ln -snf "$HOME/.config/vesktop/themes/$choice.css" "$HOME/.config/vesktop/themes/system24.theme.css"
-ln -snf "$BASE_DIR/themes/$choice" "$HOME/ikigai/current"
+ln -snf "$BASE_DIR/dunst/dunstrc.d/$choice" "$BASE_DIR/dunst/dunstrc.d/current-theme.conf"
 ln -snf "$HOME/.config/zathura/$choice" "$HOME/.config/zathura/theme"
+echo "$choice" >"$HOME/.config/nvim/.current-theme"
+echo $choice >"$HOME/.config/cosmic/current-theme"
 
 case "$choice" in
 catppuccin)
   gtk_theme="Catppuccin-Dark"
   ;;
 everforest)
-  spc=EverforestDarkMedium
-
   gtk_theme="Everforest-Dark"
+  ;;
+nord)
+  gtk_theme="Nordic"
   ;;
 esac
 
@@ -46,7 +48,10 @@ if [ -d "$HOME/.themes/$gtk_theme/gtk-4.0" ]; then
   ln -sf "$HOME/.themes/$gtk_theme/gtk-4.0/assets" "$HOME/.config/gtk-4.0/" 2>/dev/null
 fi
 
-makoctl reload
+killall swaybg
+bash $startWallpaper
+
+dunstctl reload
 
 hyprctl reload
 

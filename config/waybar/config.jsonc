@@ -70,7 +70,7 @@
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
-    "on-click": "~/.local/bin/toggle_power",
+    "on-click": "~/.local/bin/toggle-power",
     "states": {
       "warning": 20,
       "critical": 10
@@ -91,7 +91,7 @@
     "tooltip-format": "Playing at {volume}%",
     "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
-    "format-muted": "  {volume}%",
+    "format-muted": "",
     "format-icons": {
       "default": ["", "", ""]
     }

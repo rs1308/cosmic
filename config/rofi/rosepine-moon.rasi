@@ -1,9 +1,0 @@
-* {
-    background:     #232136FF;  /* base */
-    background-alt: #2A273FFF;  /* surface */
-    foreground:     #E0DEF4FF;  /* text */
-    selected:       #C4A7E7FF;  /* iris */
-    active:         #9CCFD8FF;  /* foam */
-    urgent:         #EB6F92FF;  /* love */
-}
-

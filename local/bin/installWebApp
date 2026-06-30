@@ -2,19 +2,25 @@
 
 name=$(gum input --placeholder "Enter name of App")
 
-homeDir=$( echo $HOME )
-
-iconpath="$homeDir/.local/share/icons/$name.svg"
+[[ -z "$name" ]] && echo "Error: Name cannot be empty." && sleep 2 && exit 1
 
 url=$(gum input --placeholder "Enter url for the website (eg.https://example.com)")
 
-iconUrl=$( gum input --placeholder "Enter svg url for App from dashboardicons.com" )
+[[ -z "$name" ]] && echo "Error: Name cannot be empty." && sleep 2 && exit 1
+
+browser=$(gum input --placeholder "Enter browser that you want to use (chromium based)")
+
+iconUrl=$(gum input --placeholder "Enter svg url for App from dashboardicons.com")
+
+homeDir=$(echo $HOME)
+
+iconpath="$homeDir/.local/share/icons/$name.svg"
 
 curl -L -o ~/.local/share/icons/$name.svg "$iconUrl"
 
-launchCommand="chromium --app=\""$url"\" --user-data-dir=\""$homeDir"/.config/webApps/"$name"\" --no-first-run --no-default-browser-check"
+launchCommand="$browser --app=\""$url"\" --user-data-dir=\""$homeDir"/.config/webApps/"$name"\" --no-first-run --no-default-browser-check"
 
-cat > ~/.local/share/applications/$name.desktop << EOF
+cat >~/.local/share/applications/$name.desktop <<EOF
 [Desktop Entry]
 Type=Application
 Name=$name

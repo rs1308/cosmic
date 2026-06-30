@@ -6,19 +6,17 @@ configuration {
     icon-theme: "Mignon-pastel"; /* Replace with the name of your installed icon theme */
     show-icons: true;
     drun-display-format: "{name}";
+    drun-match-fields: "name";
     location: 0;
-    disable-history: true;
+    sort: false;
+    history: true;
     hide-scrollbar: true;
     display-drun: "   Apps ";
     display-run: "   Run ";
     display-window: " 󰕰  Window ";
     sidebar-mode: false;
     fixed-num-lines: false;
-    matching: "fuzzy";
-
-    drun {
-        DBusActivatable: false;
-      }
+    matching: "prefix";
 }
 
 

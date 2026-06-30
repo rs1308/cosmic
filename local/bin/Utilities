@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+binDIr=~/.config/cosmic/local/bin
+
+main_menu() {
+  Utils=(
+    "MSI"
+    "Web Apps"
+    "Themes"
+    "Exit"
+  )
+
+  choice=$(
+    (
+      IFS=$'\n'
+      echo "${Utils[*]}"
+    ) | rofi -dmenu
+  )
+
+  case "$choice" in
+  "MSI") msi_menu ;;
+  "Web Apps") webapps_menu ;;
+  "Themes") themes_menu ;;
+  "Exit") exit 0 ;;
+  esac
+}
+
+msi_menu() {
+  MSI=(
+    "Cooler Boost"
+    "Exit"
+  )
+
+  choice=$(
+    (
+      IFS=$'\n'
+      echo "${MSI[*]}"
+    ) | rofi -dmenu
+  )
+
+  case "$choice" in
+  "Cooler Boost")
+    dunstify "Cooler Boost Activated"
+    ;;
+  "Exit")
+    return
+    ;;
+  esac
+}
+
+webapps_menu() {
+  WebApps=(
+    "Install"
+    "Uninstall"
+    "Exit"
+  )
+
+  choice=$(
+    (
+      IFS=$'\n'
+      echo "${WebApps[*]}"
+    ) | rofi -dmenu
+  )
+
+  case "$choice" in
+  "Install")
+    alacritty --class WebAppInstaller -e $binDIr"/installWebApp"
+    ;;
+  "Uninstall")
+    dunstify "Uninstall menu not yet ready"
+    ;;
+  "Exit")
+    return
+    ;;
+  esac
+}
+
+while true; do
+  main_menu
+done
