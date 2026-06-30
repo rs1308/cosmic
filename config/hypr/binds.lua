@@ -15,17 +15,15 @@ hl.bind("ALT + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(menu .. " -theme-str 'entry { placeholder: \"Apps\"; }'"))
 
-hl.bind("ALT + R", hl.dsp.exec_cmd("~/.local/bin/record-screen"))
-
 hl.bind("ALT + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
 
-hl.bind("PRINT", hl.dsp.exec_cmd("~/.local/bin/screenshot-full"))
+hl.bind("PRINT", hl.dsp.exec_cmd("~/.local/bin/screenshotFull"))
 
-hl.bind("ALT + PRINT", hl.dsp.exec_cmd("~/.local/bin/screenshot-region"))
+hl.bind("ALT + PRINT", hl.dsp.exec_cmd("~/.local/bin/screenshotRegion"))
 
-hl.bind("ALT + SHIFT + W", hl.dsp.exec_cmd("~/.local/bin/next-wallpaper"))
+hl.bind("ALT + SHIFT + W", hl.dsp.exec_cmd("~/.local/bin/nextWallpaper"))
 
-hl.bind("ALT + P", hl.dsp.exec_cmd("~/.local/bin/toggle-power"))
+hl.bind("ALT + P", hl.dsp.exec_cmd("~/.local/bin/togglePower"))
 
 hl.bind("ALT + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
 
@@ -33,11 +31,11 @@ hl.bind("ALT + period", hl.dsp.exec_cmd("rofi -modi emoji -show emoji"))
 
 hl.bind("ALT + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 
-hl.bind("CTRL + ALT + W", hl.dsp.exec_cmd("~/.local/bin/restart-waybar"))
+hl.bind("CTRL + ALT + W", hl.dsp.exec_cmd("~/.local/bin/restartWaybar"))
 
-hl.bind("ALT + T", hl.dsp.exec_cmd("~/.local/bin/change-theme"))
+hl.bind("ALT + T", hl.dsp.exec_cmd("~/.local/bin/changeTheme"))
 
-hl.bind("ALT + DELETE", hl.dsp.exec_cmd("~/.local/bin/power-menu"))
+hl.bind("ALT + DELETE", hl.dsp.exec_cmd("~/.local/bin/powerMenu"))
 
 hl.bind("ALT + B", hl.dsp.exec_cmd(browser))
 
@@ -113,4 +111,4 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), {
 	locked = true,
 })
 
-hl.bind("ALT + N", hl.dsp.exec_cmd("~/.local/bin/nightlight-toggle"))
+hl.bind("ALT + N", hl.dsp.exec_cmd("~/.local/bin/nightlightToggle"))
